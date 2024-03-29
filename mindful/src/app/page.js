@@ -1,8 +1,10 @@
 import Link from 'next/link';
-
+import Navbar from '@/pages/nav';
 export default function Home() {
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className='flex'>
+   <Navbar/>
+   <div className="hero min-h-screen font-serif  bg-base-200">
    <div className="hero-content text-center">
         <div className="max-w-md">
         <h1 className="text-5xl font-bold">Mindful</h1>
@@ -13,6 +15,7 @@ export default function Home() {
       </div>
      
     </div>
+  </div>
   </div>
   );
 }
