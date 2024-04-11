@@ -4,8 +4,8 @@ export default function Home() {
   return (
     <div className='flex'>
    <Navbar/>
-   <div className="artboard artboard-horizontal phone-3  min-h-screen font-serif  bg-slate-50">
-   1024×320
+   <div className="artboard artboard-horizontal   min-h-screen font-serif  bg-slate-50">
+   
    <div className="chat chat-start">
   <div className="chat-bubble chat-bubble-primary">What kind of nonsense is this</div>
 </div>
