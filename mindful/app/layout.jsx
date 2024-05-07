@@ -5,7 +5,7 @@ export const metadata = {
     description:'A wellness application that helps understand and deal with emotions'
 }
 
-const RootLayout = () => {
+const RootLayout = ({children}) => {
   return (
    <html lang='eng'>
     <body>
