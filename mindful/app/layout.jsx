@@ -1,4 +1,5 @@
 import '@styles/global.css';
+import Nav from '@components/Nav';
 
 export const metadata = {
     title:'Mindful',
@@ -12,6 +13,7 @@ const RootLayout = ({children}) => {
         <div className='main'>
             <div className='gradient'>
                 <main className='app'>
+                    <Nav/>
                     {children}
 
                 </main>

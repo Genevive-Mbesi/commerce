@@ -1,4 +1,6 @@
 
+import Feed from '@components/Feed';
+
 
 const Home = () => {
   return (
@@ -10,8 +12,10 @@ const Home = () => {
           <span>A wellness application</span>
         </h1>
         <p>Mindnd full a wellnes application for managing emotions</p>
+
+        <Feed/>
       </section>
-    
+      
   )
 }
 
