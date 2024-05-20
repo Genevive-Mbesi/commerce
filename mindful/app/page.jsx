@@ -1,19 +1,23 @@
 'use client';
 import Feed from '@components/Feed';
+import Image from 'next/image';
 
 
 const Home = () => {
   return (
     
-      <section className="w-full flex-center flex-col">
-        <h1 className="head_text text-center">
-          Mindful
-          <br className="max-md:hidden"/>
-          <span>A wellness application</span>
-        </h1>
-        <p>Mindnd full a wellnes application for managing emotions</p>
+      <section className='relative w-full h-screen'>
+        <h1 className="flex justify-center items-center">
+          <Image
+        src="/assets/mindful.png"
+        alt="Picture of the author"
+        layout="fill"
+        objectFit="cover"
+    
+      />
 
-        <Feed/>
+          <br className="max-md:hidden"/>
+        </h1>
       </section>
       
   )
