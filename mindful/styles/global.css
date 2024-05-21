@@ -5,7 +5,7 @@
 /* Add this to your global CSS file */
 .home {
     position: relative;
-    height: 150vh;
+    height: 200vh;
     justify-content: center;
     align-items: center;
     overflow: hidden;
