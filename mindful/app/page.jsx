@@ -1,6 +1,7 @@
 'use client';
 import Feed from '@components/Feed';
 import Image from 'next/image';
+import Happy from '@components/Happy';
 
 
 const Home = () => {

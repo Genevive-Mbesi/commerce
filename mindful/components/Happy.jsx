@@ -1,11 +1,11 @@
 import React from 'react'
 
-const PromptCard = () => {
+const Happy = () => {
   return (
     <div>
-      
+     Hello
     </div>
   )
 }
 
-export default PromptCard
+export default Happy
