@@ -1,5 +1,5 @@
 import '@styles/global.css';
-import Nav from '@components/Nav';
+import Nav from '@components/nav';
 
 export const metadata = {
     title:'Mindful',
