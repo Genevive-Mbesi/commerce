@@ -1,6 +1,7 @@
 import { Card, CardDescription, CardHeader,CardTitle,CardContent } from "@/components/ui/card";
 import db from "@/db/db";
 import { formatCurrency,formatNumber } from "@/lib/formatters";
+import { waitForDebugger } from "inspector";
 
 
 
@@ -10,10 +11,15 @@ async function getSalesData() {
         _sum: { priceInPaidInCents: true},
         _count: true
     })
+
+    await wait(500)
     return {
         amount:(data._sum.priceInPaidInCents || 0)/100,
         numberOfSales:data._count
     }
+}
+function wait (duration:number) {
+    return new Promise (resolve=> setTimeout (resolve,duration))
 }
 
 async function getUserData() {
@@ -30,13 +36,22 @@ async function getUserData() {
     }
 }
 
+async function getProductData() {
+    const [activeCount,inactiveCount]= await Promise.all([
+         db.product.count({where: {IsAvailableForPurchase: true} }),
+         db.product.count({where: {IsAvailableForPurchase: false} }),
+       ])
+    
+     return {activeCount, inactiveCount}
+ }
 
 
 
 export default async function AdminDashboard() {
-    const [salesData, userData] = await Promise.all([
+    const [salesData, userData,productData] = await Promise.all([
         getSalesData(),
-        getUserData()
+        getUserData(),
+        getProductData()
 
     ])
    
@@ -48,7 +63,12 @@ export default async function AdminDashboard() {
         userData.averageValuePerUser
     )} Average Value`} 
        body={formatNumber(userData.userCount)}/>
+       <DashboardCard title="Active Products" subtitle={`${formatNumber(
+        productData.inactiveCount
+    )} Inactive`} 
+       body={formatNumber( productData.activeCount )}/>
     </div>
+    
 
     
   )
