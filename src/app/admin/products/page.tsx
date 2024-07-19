@@ -56,11 +56,11 @@ if (products.length ===0)<p>No products found</p>
             {product.IsAvailableForPurchase ? (
               <>
               <CheckCircle2/>
-              <span className="sr=only">Available</span>
+              <span className="sr=only"></span>
               </>
               ) :(
                 <>
-                <span className="sr=only">Unavailable</span>
+                <span className="sr=only"></span>
                 <XCircle/>
                 </>
               
