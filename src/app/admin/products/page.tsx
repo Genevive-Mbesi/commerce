@@ -61,7 +61,7 @@ if (products.length ===0)<p>No products found</p>
               ) :(
                 <>
                 <span className="sr=only"></span>
-                <XCircle/>
+                <XCircle className="stroke-destructive"/>
                 </>
               
             )}
