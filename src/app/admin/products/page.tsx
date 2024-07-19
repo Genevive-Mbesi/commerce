@@ -1,12 +1,13 @@
 import { PageHeader } from "../_components/PageHeader";
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuItem, DropdownMenuTrigger,DropdownMenuContent } from "@/components/ui/dropdown-menu";
+import { DropdownMenu, DropdownMenuItem, DropdownMenuTrigger,DropdownMenuContent, DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
 import { Table, TableBody, TableHeader, TableHead, TableRow, TableCell } from "@/components/ui/table";
 import db from "@/db/db";
 import { formatCurrency, formatNumber } from "@/lib/formatters";
 import { CheckCircle2, MoreVertical, XCircle } from "lucide-react";
 import Link from "next/link";
 import { format } from "path";
+import { ActiveToggleDropdownItem, DeleteDropdownItem } from "../_actions/ProductActions";
 
 export default function AdminProductsPage() {
   return (
@@ -80,6 +81,13 @@ if (products.length ===0)<p>No products found</p>
                     <DropdownMenuItem asChild>
                       <Link href ={`/admin/products/${product.id}/edit`} >Edit</Link>
                     </DropdownMenuItem>
+                    <ActiveToggleDropdownItem id={product.id}
+                    IsAvailableForPurchase={product.IsAvailableForPurchase}
+                    />
+                    <DeleteDropdownItem id ={product.id} 
+                    disabled ={product._count.orders> 0}
+                    />
+                  <DropdownMenuSeparator/>
                   </DropdownMenuContent>
                 </DropdownMenuTrigger>
               </DropdownMenu>
