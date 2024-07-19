@@ -55,8 +55,8 @@ if (products.length ===0)<p>No products found</p>
             <TableCell>
             {product.IsAvailableForPurchase ? (
               <>
-              <CheckCircle2/>
               <span className="sr=only"></span>
+              <CheckCircle2/>
               </>
               ) :(
                 <>
