@@ -3,15 +3,31 @@
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { formatCurrency } from "@/lib/formatters";
 import { Button } from "@/components/ui/button";
 import { addProduct } from "../_actions/products";
 import { useFormState, useFormStatus } from "react-dom";
 
-export function ProductsForm() {
+interface Product {
+  id: string;
+  name: string;
+  priceInCents: number;
+  filePath: string;
+  imagePath: string;
+  description: string;
+  IsAvailableForPurchase: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+interface ProductsFormProps {
+  product: Product | null;
+}
+
+export function ProductsForm({ product }: ProductsFormProps) {
   const [error, action] = useFormState(addProduct, {});
-  const [priceInCents, setPriceInCents] = useState<number>();
+  const [priceInCents, setPriceInCents] = useState<number>(product?.priceInCents || 0);
   const [file, setFile] = useState<File | null>(null);
   const [image, setImage] = useState<File | null>(null);
 
@@ -31,7 +47,7 @@ export function ProductsForm() {
     <form action={action} className="space-y-8">
       <div className="space-y-2">
         <Label htmlFor="name">Name</Label>
-        <Input type="text" id="name" required />
+        <Input type="text" id="name" required defaultValue={product?.name || ''} />
         {error.name && <div className="text-destructive">{error.name}</div>}
       </div>
       <div className="space-y-2">
@@ -41,7 +57,7 @@ export function ProductsForm() {
           id="priceInCents"
           required
           value={priceInCents}
-          onChange={(e) => setPriceInCents(Number(e.target.value) || undefined)}
+          onChange={(e) => setPriceInCents(Number(e.target.value) || 0)}
         />
         <div className="text-muted-foreground">
           {formatCurrency((priceInCents || 0) / 100)}
@@ -50,7 +66,7 @@ export function ProductsForm() {
       </div>
       <div className="space-y-2">
         <Label htmlFor="description">Description</Label>
-        <Textarea id="description" required />
+        <Textarea id="description" required defaultValue={product?.description || ''} />
         {error.description && <div className="text-destructive">{error.description}</div>}
       </div>
       <div className="space-y-2">

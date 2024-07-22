@@ -14,7 +14,7 @@ import {
   type OrderHistoryEmailProps = {
     orders: {
       id: string
-      pricePaidInCents: number
+      priceInPaidInCents: number
       createdAt: Date
       downloadVerificationId: string
       product: {
@@ -30,7 +30,7 @@ import {
       {
         id: crypto.randomUUID(),
         createdAt: new Date(),
-        pricePaidInCents: 10000,
+        priceInPaidInCents: 10000,
         downloadVerificationId: crypto.randomUUID(),
         product: {
           name: "Product name",
@@ -42,7 +42,7 @@ import {
       {
         id: crypto.randomUUID(),
         createdAt: new Date(),
-        pricePaidInCents: 2000,
+        priceInPaidInCents: 2000,
         downloadVerificationId: crypto.randomUUID(),
         product: {
           name: "Product name 2",

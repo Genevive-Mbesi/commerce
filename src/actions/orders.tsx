@@ -8,6 +8,19 @@ import { z } from "zod"
 const emailSchema = z.string().email()
 const resend = new Resend(process.env.RESEND_API_KEY as string)
 
+interface OrderWithVerification {
+  id: string
+  priceInPaidInCents: number
+  createdAt: Date
+  downloadVerificationId: string
+  product: {
+    id: string
+    name: string
+    imagePath: string
+    description: string
+  }
+}
+
 export async function emailOrderHistory(
   prevState: unknown,
   formData: FormData
@@ -42,30 +55,30 @@ export async function emailOrderHistory(
 
   if (user == null) {
     return {
-      message:
-        "Check your email to view your order history and download your products.",
+      message: "Check your email to view your order history and download your products.",
     }
   }
 
-  const orders = user.orders.map(async order => {
-    return {
-      ...order,
-      downloadVerificationId: (
-        await db.downloadVerification.create({
-          data: {
-            expiresAt: new Date(Date.now() + 24 * 1000 * 60 * 60),
-            productId: order.product.id,
-          },
-        })
-      ).id,
-    }
-  })
+  const orders: OrderWithVerification[] = await Promise.all(
+    user.orders.map(async (order) => {
+      const downloadVerification = await db.downloadVerification.create({
+        data: {
+          expiresAt: new Date(Date.now() + 24 * 1000 * 60 * 60),
+          productId: order.product.id,
+        },
+      })
+      return {
+        ...order,
+        downloadVerificationId: downloadVerification.id,
+      }
+    })
+  )
 
   const data = await resend.emails.send({
     from: `Support <${process.env.SENDER_EMAIL}>`,
     to: user.email,
     subject: "Order History",
-    react: <OrderHistoryEmail orders={await Promise.all(orders)} />,
+    react: <OrderHistoryEmail orders={orders} />,
   })
 
   if (data.error) {
@@ -73,7 +86,6 @@ export async function emailOrderHistory(
   }
 
   return {
-    message:
-      "Check your email to view your order history and download your products.",
+    message: "Check your email to view your order history and download your products.",
   }
 }

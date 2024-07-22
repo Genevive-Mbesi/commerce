@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
     const charge = event.data.object
     const productId = charge.metadata.productId
     const email = charge.billing_details.email
-    const pricePaidInCents = charge.amount
+    const priceInPaidInCents = charge.amount
 
     const product = await db.product.findUnique({ where: { id: productId } })
     if (product == null || email == null) {
@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
 
     const userFields = {
       email,
-      orders: { create: { productId, pricePaidInCents } },
+      orders: { create: { productId, priceInPaidInCents } },
     }
     const {
       orders: [order],
