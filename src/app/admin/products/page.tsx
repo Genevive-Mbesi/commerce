@@ -19,7 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { ActiveToggleDropdownItem,DeleteDropdownItem} from "../_actions/ProductActions"
+import { ActiveToggleDropdownItem,DeleteDropdownItem } from "../_components/ProductActions"
 
 export default function AdminProductsPage() {
   return (
