@@ -1,6 +1,6 @@
 import db from "@/db/db";
 import { PageHeader } from "../../../_components/PageHeader";
-import { ProductsForm } from "../../../_components/ProductsForm";
+import { ProductForm } from "@/app/admin/_components/ProductsForm";
 
 export default async function EditProductPage({
   params: { id },
@@ -12,7 +12,7 @@ export default async function EditProductPage({
   return (
     <>
       <PageHeader>Edit Product</PageHeader>
-      <ProductsForm product={product} />
+      <ProductForm product={product} />
     </>
   );
 }
