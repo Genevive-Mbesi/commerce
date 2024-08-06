@@ -30,25 +30,29 @@ To get started with the project, follow these steps:
 
 Clone the repository:
 
-bash
-Copy code
+#### bash
+
+#### Copy code
 git clone https://github.com/Genevive-Mbesi/mbesi-commerce.git
 cd mbesi-commerce
 
 ### Install dependencies
 
-bash
-Copy code
+#### bash
+
+#### Copy code
 npm install
-Set up environment variables:
-bash
-Copy code
+
+#### Set up environment variables:
+
+
+#### Copy code
 npm run dev
 Open http://localhost:3000 with your browser to see the result.
 
 ### Usage
 
-Admin Authentication:
+#### Admin Authentication:
 Admin can log in and log out.
 
 #### Product Management
