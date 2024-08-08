@@ -18,10 +18,15 @@ Tech Stack
 ### Frontend Framework: Next.js
 
 Styling: Tailwind CSS, ShadCN
+
 Backend: Node.js, Next.js API Routes
+
 Database: Prisma
+
 Payments: Stripe
+
 Email Service: Resend
+
 Language: TypeScript
 
 ### Installation
@@ -34,6 +39,7 @@ Clone the repository:
 
 #### Copy code
 git clone https://github.com/Genevive-Mbesi/mbesi-commerce.git
+
 cd mbesi-commerce
 
 ### Install dependencies
@@ -48,6 +54,7 @@ npm install
 
 #### Copy code
 npm run dev
+
 Open http://localhost:3000 with your browser to see the result.
 
 ### Usage
