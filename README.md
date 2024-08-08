@@ -65,7 +65,9 @@ Admin can log in and log out.
 #### Product Management
 
 View product listings.
+
 Add products to the shopping cart.
+
 Checkout using Stripe for secure payments.
 
 #### Order Management
