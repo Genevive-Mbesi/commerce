@@ -90,7 +90,7 @@ function Form({
 
     if (orderExists) {
       setErrorMessage(
-        "You have already purchased this product. Try downloading it from the My Orders page"
+        "You have already purchased this product. Try downloading it from the Order History page"
       )
       setIsLoading(false)
       return

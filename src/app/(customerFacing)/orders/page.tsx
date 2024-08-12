@@ -20,7 +20,7 @@ export default function MyOrdersPage() {
     <form action={action} className="max-2-xl mx-auto">
       <Card>
         <CardHeader>
-          <CardTitle>My Orders</CardTitle>
+          <CardTitle>Order History</CardTitle>
           <CardDescription>
             Enter your email and we will email you your order history and
             download links
