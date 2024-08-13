@@ -1,4 +1,4 @@
-# Mbesi-e-Commerce
+# Mbesi-e-commerce
 
 Welcome to Mbesi Commerce Website, a full-stack e-commerce application built with Next.js
 
