@@ -4,7 +4,7 @@ Welcome to Mbesi Commerce Website, a full-stack e-commerce application built wit
 
 ## Live Application
 
- https://mbesi-commerce.onrender.com/
+ https://mbesi-commerce.onrender.com
 
 
 ### Frontend Framework: Next.js
