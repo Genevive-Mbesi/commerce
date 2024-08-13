@@ -21,18 +21,6 @@ interface OrderWithVerification {
   }
 }
 
-interface UserOrder {
-  id: string
-  priceInPaidInCents: number
-  createdAt: Date
-  product: {
-    id: string
-    name: string
-    imagePath: string
-    description: string
-  }
-}
-
 export async function emailOrderHistory(
   prevState: unknown,
   formData: FormData
@@ -49,8 +37,8 @@ export async function emailOrderHistory(
       email: true,
       orders: {
         select: {
-          id: true,
           priceInPaidInCents: true,
+          id: true,
           createdAt: true,
           product: {
             select: {
@@ -65,14 +53,14 @@ export async function emailOrderHistory(
     },
   })
 
-  if (user == null || user.orders.length === 0) {
+  if (user == null) {
     return {
       message: "Check your email to view your order history and download your products.",
     }
   }
 
   const orders: OrderWithVerification[] = await Promise.all(
-    user.orders.map(async (order: UserOrder) => {
+    user.orders.map(async (order) => {
       const downloadVerification = await db.downloadVerification.create({
         data: {
           expiresAt: new Date(Date.now() + 24 * 1000 * 60 * 60),
