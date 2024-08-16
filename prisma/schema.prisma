@@ -10,11 +10,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Product{
+model Product {
   id                     String      @id @default(uuid())
   name                   String
   priceInCents           Int
-  filePath   
+  filePath               String
   IsAvailableForPurchase Boolean     @default(true)
   createdAt              DateTime    @default(now())
   updatedAt              DateTime    @updatedAt
@@ -22,36 +22,31 @@ model Product{
   DownloadVerification   DownloadVerification[]
 }
 
-model User{
-  id            String    @id@default(uuid())
+model User {
+  id            String    @id @default(uuid())
   email         String    @unique
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   orders        Order[]
 }
 
-
 model Order {
-  id                     String     @id@default(uuid())
+  id                     String     @id @default(uuid())
   priceInPaidInCents     Int
   createdAt              DateTime   @default(now())
   updatedAt              DateTime   @updatedAt
-
-  userId            String
-  productId         String
-  user User         @relation(fields: [userId], references: [id], onDelete: Cascade)
-  product Product   @relation(fields: [productId], references: [id], onDelete: Restrict)
+  
+  userId                 String
+  productId              String
+  user                   User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product                Product    @relation(fields: [productId], references: [id], onDelete: Restrict)
 }
 
-
 model DownloadVerification {
-  id              String     @id@default(uuid())
+  id              String     @id @default(uuid())
   createdAt       DateTime   @default(now())
   expiresAt       DateTime  
   productId       String
-  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-
+  product         Product    @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
-
-
 
