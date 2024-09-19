@@ -22,6 +22,7 @@
     "lucide-react": "^0.400.0",
     "mime": "^4.0.4",
     "next": "^14.2.4",
+    "postgres": "^3.4.4",
     "react": "^18",
     "react-dom": "^18",
     "react-email": "^2.1.6",
